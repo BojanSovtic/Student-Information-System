@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin("http://localhost:4200")
 public class StudentRestController {
 
 
@@ -72,6 +73,16 @@ public class StudentRestController {
                 linkTo(methodOn(StudentRestController.class).findAll(Pageable.unpaged())).withSelfRel());
     }
 
+    @GetMapping("/students/search/findByEmailContaining/{email}")
+    public ResponseEntity<?> findByEmail(@PathVariable String email, Pageable pageable) {
+
+        Page<Student> students = studentService.findByEmailContaining(email, pageable);
+
+        PagedModel<EntityModel<Student>> studentsCollection = pagedResourcesAssembler.toModel(students, assembler);
+
+        return new ResponseEntity<>(studentsCollection, HttpStatus.OK);
+    }
+
     @PostMapping("/students")
     public ResponseEntity<?> addStudent(@RequestBody Student tempStudent) {
 
@@ -85,7 +96,7 @@ public class StudentRestController {
     }
 
     @PutMapping("/students/{studentId}")
-    public ResponseEntity<?> updateStudent(@RequestBody Student tempStudent, @PathVariable int studentId) {
+    public ResponseEntity<?> updateStudent(@RequestBody Student tempStudent, @PathVariable Integer studentId) {
 
         studentService.updateStudent(tempStudent, studentId);
 

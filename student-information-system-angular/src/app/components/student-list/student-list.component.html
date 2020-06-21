@@ -1,0 +1,74 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+
+        <h4 *ngIf="currentCourseTitle != ''; else elseCourseTitle" >Course: {{ currentCourseTitle }}</h4>
+        <ng-template #elseCourseTitle><h4>All Students</h4></ng-template>
+        <hr>
+        
+        <div class="container-fluid">
+            <div class="row">
+
+                <div *ngFor="let tempStudent of students" class="col-md-3">
+
+                    <div class="product-box">
+                        
+                        <p>
+                            {{ tempStudent.firstName }} <br>
+                            {{ tempStudent.lastName}} <br>
+                            {{ tempStudent.email }}
+                        </p>
+
+                        <a routerLink="/students/{{ tempStudent.id }}">
+                            
+                            <h1>{{ tempStudent.indexNumber }}</h1>
+                        </a>
+                        
+                        <hr>
+
+                        <button routerLink="/students/{{ tempStudent.id }}" class="btn btn-primary btn-sm">Show details</button>
+
+                    </div>
+                </div>
+
+                <div *ngIf="students?.length <= 0" class="alert alert-warning col-md-12" role="alert">
+                    No student found.
+                </div>
+                
+
+            </div>
+
+            <div class="footer-pagination">
+                <div class="row">
+                    <div class="col-md-6"></div>
+
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div *ngIf="currentCourseTitle === ''"
+                                  class="col-md-9" 
+                                  style="padding-left: 30%">
+                                
+                                <ngb-pagination [(page)]="thePageNumber"
+                                                [pageSize]="thePageSize"
+                                                [collectionSize]="theTotalElements"
+                                                [maxSize]="5"
+                                                [boundaryLinks]="true"
+                                                (pageChange)="listAllStudents()">
+
+                                </ngb-pagination>
+                                
+                            </div>
+
+                            <button (click)="listAllStudents()" 
+                                        class="btn btn-primary">Show all students</button>
+                            <button routerLink="/students/new"
+                                    class="btn btn-primary ml-2">Create new student</button>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

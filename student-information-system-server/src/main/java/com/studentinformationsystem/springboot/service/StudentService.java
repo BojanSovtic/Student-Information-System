@@ -13,7 +13,7 @@ public interface StudentService {
 
     public Student createStudent(Student student);
 
-    public Student updateStudent(Student student, int theId);
+    public Student updateStudent(Student student, Integer theId);
 
     public ResponseEntity<?> deleteById(int theId);
 

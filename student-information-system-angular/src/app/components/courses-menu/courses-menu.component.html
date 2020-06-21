@@ -1,0 +1,16 @@
+<div class="menu-sidebar-content js-scrollbar1">
+    <nav class="navbar-sidebar">
+        <ul class="list-unstyled navbar-list">
+
+            <li *ngFor="let tempCourse of courses">
+
+                <a routerLink="/courses/{{ tempCourse.id }}/{{ tempCourse.title }}" 
+                   routerLinkActive="active-link">
+                    {{ tempCourse.title }}
+                </a>
+
+            </li>
+            
+        </ul>
+    </nav>
+</div>

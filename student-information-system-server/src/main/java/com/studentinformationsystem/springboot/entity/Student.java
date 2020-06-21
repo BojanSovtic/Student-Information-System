@@ -13,7 +13,7 @@ public class Student {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="student_id")
-    private int id;
+    private Integer id;
 
     @Column(name="first_name")
     private String firstName;
@@ -22,7 +22,7 @@ public class Student {
     private String lastName;
 
     @Column(name="index_number")
-    private Integer indexNumber;
+    private Long indexNumber;
 
     @Column(name="email")
     private String email;
@@ -42,11 +42,11 @@ public class Student {
 
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -66,11 +66,11 @@ public class Student {
         this.lastName = lastName;
     }
 
-    public Integer getIndexNumber() {
+    public Long getIndexNumber() {
         return indexNumber;
     }
 
-    public void setIndexNumber(Integer indexNumber) {
+    public void setIndexNumber(Long indexNumber) {
         this.indexNumber = indexNumber;
     }
 

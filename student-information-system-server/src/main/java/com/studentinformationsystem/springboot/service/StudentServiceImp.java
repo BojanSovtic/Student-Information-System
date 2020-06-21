@@ -35,7 +35,7 @@ public class StudentServiceImp implements StudentService {
 
     @Override
     @Transactional
-    public Student updateStudent(Student newStudent, int theId) {
+    public Student updateStudent(Student newStudent, Integer theId) {
         return studentRepository.findById(theId).map(student -> {
             student.setFirstName(newStudent.getFirstName());
             student.setLastName(newStudent.getLastName());

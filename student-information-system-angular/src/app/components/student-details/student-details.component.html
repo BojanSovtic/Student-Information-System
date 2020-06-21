@@ -1,0 +1,35 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+
+        <table class="table table-bordered">
+            <tr>
+                <th width="20%">Student Image</th>
+                <th width="50%">Student Detail</th>
+                <th width="30%"></th>
+            </tr>
+
+            <tr>
+                <td>
+                    <img src="#" alt="Placeholder for image..." class="img-responsive" width="150px" />
+                </td>
+                <td>
+                    <p>{{ student.firstName }}</p>
+                    <p>{{ student.lastName }}</p>
+                    <p>{{ student.email }}</p>
+                    <p>{{ student.indexNumber }}</p>
+                </td>
+                <td>
+                    <button routerLink="/students/update/{{ student.id }}" 
+                            class="btn btn-primary">Update Student</button>
+                    <hr>
+                    <button (click)="deleteStudent()"
+                            class="btn btn-primary">Delete Student</button>
+                </td>
+            </tr>
+        </table>
+
+        
+
+        <a routerLink="/students" class="mt-5">Back to Student List</a>
+    </div>
+</div>
